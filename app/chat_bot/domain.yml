@@ -1,0 +1,98 @@
+version: '3.1'
+intents:
+- affirm
+- bot_challenge
+- buy_pizza
+- deny
+- goodbye
+- greet
+- greet2
+- inform
+- menu
+- stop
+entities:
+- pizza_size
+- pizza_type
+- pizza_number
+forms:
+  pizza_form:
+    required_slots:
+    - pizza_type
+    - pizza_size
+    - pizza_number
+slots:
+  pizza_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pizza_type
+      action: validate_pizza_form
+      conditions:
+      - active_loop: pizza_form
+        requested_slot: pizza_type
+  pizza_size:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pizza_size
+  pizza_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pizza_number
+responses:
+  utter_please_rephrase:
+  - text: متاسفم. متوجه منظور شما نشدم. لطفا دوباره تکرار کنید.
+  utter_greet:
+  - text: "---MimTheKing FastFood---\n
+  سلام. وقت شما بخیر 
+  لطفا سفارش خود را بفرمایید
+  در حال حاظر پیتزا داریم :)"
+  utter_greet2:
+  - text: مرسی از شما. لطفا سفارش خود را بفرمایید
+  utter_goodbye:
+  - text: خداحافظ
+  utter_iamabot:
+  - text: من رباتم ها ها هررر
+  utter_ask_about_true:
+  - text: '{pizza_number} پیتزا {pizza_type} با اندازه {pizza_size} به سبد خرید شما اضافه شد.
+        سفارش شما نهایی شود؟ '
+  utter_ask_pizza_type:
+  - text: برای تکمیل خرید, لطفا نوع پیتزا خود را بفرمایید.
+    buttons:
+    - title: "پیتزا پپرونی"
+      payload: '/inform{{"pizza_type":"پپرونی"}}'
+    - title: "پیتزا استیک"
+      payload: '/inform{{"pizza_type":"استیک"}}'
+    - title: "پیتزا سبزیجات"
+      payload: '/inform{{"pizza_type":"سبزیجات"}}'
+    - title: "پیتزا گوشت"
+      payload: '/inform{{"pizza_type":"گوشت"}}'
+    - title: "پیتزا مرغ"
+      payload: '/inform{{"pizza_type":"مرغ"}}'
+  utter_ask_pizza_size:
+  - text: چه سایزی لازم دارید؟
+  utter_ask_pizza_number:
+  - text: چه تعدادی لازم دارید؟
+  utter_ask_continue:
+  - text: مطینی می خواهید سفارش خود را لغو کنید؟
+  utter_menu:
+  - image: /home/mim/Desktop/Projects/chat_bot/menu.jpg
+    text: منو رستوران
+actions:
+- utter_ask_about_true
+- utter_greet
+- action_deactivate_loop
+- action_chat_restart
+- validate_pizza_form
+- action_check_user_confirmation
+- action_reset_bot
+- handle_confirmation
+- action_check_inform
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

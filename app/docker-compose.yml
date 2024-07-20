@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  rasa:
+    build: .
+    ports:
+      - "5055:5055"
+      - "5005:5005"
+    volumes:
+      - .:/app
+    command: ["./start_services.sh"]

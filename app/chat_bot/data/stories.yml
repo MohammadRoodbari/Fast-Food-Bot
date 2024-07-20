@@ -1,0 +1,52 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: greet2
+  - action: utter_greet2
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: buy_pizza
+  - action: pizza_form
+  - active_loop: pizza_form
+  - slot_was_set:
+    - requested_slot: pizza_type
+  - slot_was_set:
+    - pizza_type: سبزیجات
+  - slot_was_set:
+    - requested_slot: pizza_size
+  - slot_was_set:
+    - pizza_size: بزرگ
+  - slot_was_set:
+    - requested_slot: pizza_number
+  - slot_was_set:
+    - pizza_size: ۴
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_ask_about_true
+
+- story: ask for menu
+  steps:
+  - intent: menu
+  - action: utter_menu
+
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
