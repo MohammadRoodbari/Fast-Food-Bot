@@ -34,7 +34,7 @@ To run this bot, you need to have Docker installed on your machine. Follow the i
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/fast-food-bot.git
+    git clone https://github.com/MohammadRoodbari/Fast-Food-Bot.git
     cd fast-food-bot
     ```
 
