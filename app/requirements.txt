@@ -1,2 +1,2 @@
-rasa
-Flask
+rasa==3.6.20
+Flask==3.0.3
