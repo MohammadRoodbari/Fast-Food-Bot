@@ -80,7 +80,7 @@ responses:
   utter_ask_continue:
   - text: مطینی می خواهید سفارش خود را لغو کنید؟
   utter_menu:
-  - image: /home/mim/Desktop/Projects/chat_bot/menu.jpg
+  - image: ./chat_bot/menu.jpg
     text: منو رستوران
 actions:
 - utter_ask_about_true
