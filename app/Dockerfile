@@ -1,4 +1,3 @@
-# Use the official Python image from the Docker Hub
 FROM python:3.10
 
 # Set the working directory in the container
@@ -21,7 +20,6 @@ EXPOSE 5055
 
 # Expose port 5005 for Rasa server
 EXPOSE 5005
-
 
 # Run a shell script to start the services
 CMD ["./start_services.sh"]
